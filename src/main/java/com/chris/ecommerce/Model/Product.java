@@ -22,7 +22,7 @@ public class Product {
 	@Column(name = "productId")
 	private int productId;
 	@ManyToOne
-	@JoinColumn(name = "categoryId", nullable = false)
+	@JoinColumn(name = "categoryId")
 	private ProductCategory category;
 	@Column(name = "name")
 	private String name;
