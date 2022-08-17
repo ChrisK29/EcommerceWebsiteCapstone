@@ -1,6 +1,30 @@
 package com.chris.ecommerce.Model;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "address")
 public class Address {
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="addressId")
 	private int addressId;
 	private String city;
 	private String state;
@@ -9,78 +33,5 @@ public class Address {
 	private String country;
 	private String apartmentNumber;
 	
-	public Address() {
-		
-	}
-
-	public Address(int addressId, String city, String state, String street, String zipcode, String country,
-			String apartmentNumber) {
-		super();
-		this.addressId = addressId;
-		this.city = city;
-		this.state = state;
-		this.street = street;
-		this.zipcode = zipcode;
-		this.country = country;
-		this.apartmentNumber = apartmentNumber;
-	}
-
-	public int getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getApartmentNumber() {
-		return apartmentNumber;
-	}
-
-	public void setApartmentNumber(String apartmentNumber) {
-		this.apartmentNumber = apartmentNumber;
-	}
 	
-	
-
 }
