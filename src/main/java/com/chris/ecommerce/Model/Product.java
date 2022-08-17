@@ -9,34 +9,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "product")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "productId")
-	private int productId;
-	@ManyToOne
-	@JoinColumn(name = "categoryId")
-	private ProductCategory category;
-	@Column(name = "name")
-	private String name;
+	private long productId;
+	@Column(name = "category")
+	private String category;
 	@Column(name = "description")
 	private String description;
-	@Column(name = "price")
-	private double price;
-	@Column(name = "weight")
-	private double weight;
-	@Column(name = "quantity")
-	private int quantity;
 	@Column(name = "image")
 	private String image;
-	@Column(name = "category")
-	private String categoryName;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "price")
+	private double price;
+	@Column(name = "quantity")
+	private int quantity;
+	@Column(name = "weight")
+	private double weight;
 
 }

@@ -1,5 +1,8 @@
 package com.chris.ecommerce.Config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,6 +19,9 @@ import com.chris.ecommerce.Service.UserDetailsServiceImpl;
 @EnableWebSecurity
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private DataSource dataSource;
 
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -38,20 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenicationProvider());
-		
+
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin().permitAll()
-			.and()
-			.logout().permitAll()
-			;
+		http.authorizeRequests().antMatchers("/").hasAnyAuthority("CUSTOMER", "ADMIN").antMatchers("/new")
+				.hasAnyAuthority("ADMIN").antMatchers("/edit/**").hasAnyAuthority("ADMIN").antMatchers("/delete/**")
+				.hasAuthority("ADMIN").anyRequest().authenticated().and().httpBasic().and().formLogin().permitAll().and().logout()
+				.permitAll().and().exceptionHandling().accessDeniedPage("/403");
 	}
-	
-	
-
 }

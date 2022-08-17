@@ -18,12 +18,12 @@ import com.chris.ecommerce.Repo.UserRepository;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTests {
-	
+
 	@Autowired
 	private UserRepository repo;
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	@Test
 	public void testCreateUser() {
 		User user = new User();
@@ -34,17 +34,22 @@ public class UserRepositoryTests {
 		user.setPassword("password");
 		user.setContact("9195230199");
 		user.setSsn("1234");
-		
-	
+
 		User savedUser = repo.save(user);
-		
+
 		User existUser = entityManager.find(User.class, savedUser.getId());
-		
+
 		assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
+
+	}
+	
+	@Test
+	public void textFindUserByEmail() {
+		String email = "Chriskappeler@gmail.com";
 		
+		User user = repo.findByEmail(email);
 		
-		
-				
+		assertThat(user).isNotNull();
 	}
 
 }

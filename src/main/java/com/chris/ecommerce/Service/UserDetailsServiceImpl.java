@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.chris.ecommerce.Model.User;
 import com.chris.ecommerce.Repo.UserCRUDRepository;
+import com.chris.ecommerce.Repo.UserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	 
     @Autowired
     private UserCRUDRepository userRepository;
+    
      
     @Override
     public UserDetails loadUserByUsername(String username)
@@ -25,6 +27,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
          
         return new MyUserDetails(user);
+        
+        
+        
     }
+    
+    
  
 }
