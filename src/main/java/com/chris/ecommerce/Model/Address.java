@@ -19,9 +19,7 @@ import lombok.Data;
 @Table(name = "address")
 public class Address {
 	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="addressId")
@@ -33,5 +31,9 @@ public class Address {
 	private String country;
 	private String apartmentNumber;
 	
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 }

@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/").hasAnyAuthority("CUSTOMER", "ADMIN").antMatchers("/new")
 				.hasAnyAuthority("ADMIN").antMatchers("/edit/**").hasAnyAuthority("ADMIN").antMatchers("/delete/**")
-				.hasAuthority("ADMIN").anyRequest().authenticated().and().httpBasic().and().formLogin().permitAll().and().logout()
-				.permitAll().and().exceptionHandling().accessDeniedPage("/403");
+				.hasAuthority("ADMIN").anyRequest().authenticated().and().httpBasic().and().formLogin().permitAll()
+				.and().logout().permitAll().and().exceptionHandling().accessDeniedPage("/403");
 	}
 }

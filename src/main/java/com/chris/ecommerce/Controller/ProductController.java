@@ -29,7 +29,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{id}") // List products by productId
-	public ResponseEntity<Product> get(@PathVariable Long id) {
+	public ResponseEntity<Product> get(@PathVariable Integer id) {
 		try {
 			Product product = service.get(id);
 			return new ResponseEntity<Product>(product, HttpStatus.OK);
@@ -47,7 +47,7 @@ public class ProductController {
 	}
 
 	@PutMapping("/products/{id}")              // Update existing product
-	public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Long id) {
+	public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Integer id) {
 		try {
 			Product existProduct = service.get(id);
 
@@ -60,7 +60,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/products/{id}")          // Delete product by productId
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable Integer id) {
 		service.delete(id);
 	}
 }

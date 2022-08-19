@@ -22,12 +22,12 @@ public class ProductService {
 		repo.save(product);
 	}
 
-	public Product get(Long id) {
+	public Product get(Integer id) {
 		return repo.findById(id).get();
 
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repo.deleteById(id);
 
 	}
