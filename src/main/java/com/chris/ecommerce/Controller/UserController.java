@@ -13,7 +13,7 @@ import com.chris.ecommerce.Model.User;
 import com.chris.ecommerce.Repo.UserRepository;
 
 @Controller
-public class AppController {
+public class UserController {
 
 	@Autowired
 	private UserRepository repo;

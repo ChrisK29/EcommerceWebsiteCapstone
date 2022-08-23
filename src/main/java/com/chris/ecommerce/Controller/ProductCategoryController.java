@@ -22,28 +22,26 @@ public class ProductCategoryController {
 	@Autowired
 	private ProductCategoryService categoryService;
 
-
-	
 	@GetMapping("/{id}")
 	public ProductCategory getcategory(@PathVariable Integer id) {
 		return categoryService.getCategoryById(id);
 	}
-	
+
 	@GetMapping()
-	public List< ProductCategory> getcategorys() {
+	public List<ProductCategory> getcategorys() {
 		return categoryService.getAllCategory();
 	}
-	
+
 	@PostMapping("/add")
-	public void addcategory(@RequestBody  ProductCategory category) {
+	public void addcategory(@RequestBody ProductCategory category) {
 		categoryService.addCategory(category);
 	}
-	
+
 	@PutMapping("/update")
-	public void updatecategory(@RequestBody  ProductCategory category) {
+	public void updatecategory(@RequestBody ProductCategory category) {
 		categoryService.updateCategory(category);
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	public void deletecategory(@PathVariable Integer id) {
 		categoryService.deleteCategory(id);

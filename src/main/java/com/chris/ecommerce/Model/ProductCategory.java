@@ -1,5 +1,6 @@
 package com.chris.ecommerce.Model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,23 +13,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "product_category")
 @Data
-@Getter
-@Setter
+
 public class ProductCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "categoryId")
-	private int categoryId;
+	@Column(name = "id")
+	private int id;
 	@Column(name = "category")
 	private String category;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	private Set<Product> products;
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	private List<ProductCategory> products;
 
 }

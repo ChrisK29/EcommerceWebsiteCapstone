@@ -44,10 +44,10 @@ public class Order {
 	@ManyToOne()
 	@JoinColumn(nullable = false, name = "user_id", referencedColumnName = "user_id")
 	private User user;
-	@Column(nullable = false, length = 100)
-	private String billingAddress;
-	@Column(nullable = false, length = 100)
-	private String shippingAddress;
+//	@Column(nullable = false, length = 100)
+//	private String billingAddress;
+//	@Column(nullable = false, length = 100)
+//	private String shippingAddress;
 	@ManyToMany()
 	@JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "productId"), inverseJoinColumns = @JoinColumn(name = "ordersId"))
 	List<Product> product;

@@ -20,7 +20,7 @@ import com.chris.ecommerce.Model.Product;
 import com.chris.ecommerce.Service.ProductService;
 
 @RestController
-@CrossOrigin("**")  
+@CrossOrigin("origins = http://localhost:4200")
 @RequestMapping("/products")
 public class ProductController {
 

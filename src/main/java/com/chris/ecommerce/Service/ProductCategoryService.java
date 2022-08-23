@@ -33,8 +33,8 @@ public class ProductCategoryService {
 	
 	public ProductCategory updateCategory(ProductCategory category) {
 		categoryRepo
-			.findById(category.getCategoryId())
-			.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product category not found with id : "+category.getCategoryId()) );
+			.findById(category.getId())
+			.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product category not found with id : "+category.getId()) );
 		return categoryRepo.save(category);
 	}
 	
